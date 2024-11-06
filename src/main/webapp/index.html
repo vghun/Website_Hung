@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website HTML CSS Only Codehal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="logo">Study</a>
+    <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="Exercise.html">Exercise</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+<section class="home">
+    <div class="home-content">
+        <h1>Hi, I'm Hung </h1>
+        <h3 class="typewriter">MSSV: 22110339</h3>
+        <p> Hello everyone, I'm Hung . Currently,
+            I am a student at Ho Chi Minh City University of Technology and Education,
+            Faculty of Information Technology</p>
+        <div class="btn-box">
+            <a href="#">Hire Me</a><!-- comment -->
+            <a href="#">Let's Talk</a>
+        </div>
+    </div>
+    <div class="bubbles"></div>
+    <div class="home-sci">
+        <a href="https://www.facebook.com/songo.han.754703" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+        <a href="https://www.tiktok.com/@__vghun?lang=vi-VN"><i class='bx bxl-tiktok'></i></a>
+        <a href="https://www.instagram.com/__vghun/" target="blank"><i class='bx bxl-instagram' ></i></a>
+    </div>
+    <div class="card">
+        <div class="poster">
+
+            <ul class="image-list">
+                <li class="image-item"><img src="styles/avatar.jpg" alt="Avatar 1"></li>
+                <li class="image-item"><img src="styles/avatar1.jpg" alt="Avatar 2"></li>
+                <li class="image-item"><img src="styles/avatar2.jpg" alt="Avatar 3"></li>
+                <li class="image-item"><img src="styles/avatar3.jpg" alt="Avatar 4"></li>
+                <li class="image-item"><img src="styles/avatar4.jpg" alt="Avatar 5"></li>
+                <li class="image-item"><img src="styles/avatar5.jpg" alt="Avatar 6"></li>
+            </ul>
+
+        </div>
+        <div class="details">
+            <div class="infor">
+                <p>Tên tớ là : Nguyễn Văn Hưng </p>
+                <p1>Ngày Sinh : 1/11/2003</p1> <br>
+                <p2>Quê tớ: Đăk Mil-Đăk Nông</p2>
+
+
+
+            </div>
+        </div>
+
+        <!-- Nút Next với mũi tên phải -->
+        <button class="next-btn">
+            <i class='bx bxs-chevron-right'></i>
+        </button>
+
+        <!-- Nút Previous với mũi tên trái -->
+        <button class="prev-btn">
+            <i class='bx bxs-chevron-left'></i>
+        </button>
+
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const numberOfBubbles = 20;
+    const bubblesContainer = document.querySelector('.bubbles');
+
+    function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+
+        // Đặt vị trí ngẫu nhiên cho bong bóng
+        const left = Math.random() * 100; // Tọa độ left từ 0% đến 100%
+        const animationDuration = Math.random() * 5 + 5; // Thời gian sống ngẫu nhiên (từ 5s đến 10s)
+
+        bubble.style.left = `${left}%`;
+        bubble.style.animationDuration = `${animationDuration}s`;
+
+        // Thêm bong bóng vào container
+        bubblesContainer.appendChild(bubble);
+
+        // Sau khi bong bóng kết thúc hoạt ảnh, xóa nó đi để tiết kiệm bộ nhớ
+        setTimeout(() => {
+            bubble.remove();
+        }, animationDuration * 1000); // Thời gian bằng thời gian hoạt ảnh
+    }
+
+    // Tạo các bong bóng ngẫu nhiên mỗi giây
+    setInterval(createBubble, 500);
+</script>
+
+<script>
+    $(document).ready(function() {
+        let currentIndex = 0;
+        const images = $('.image-item');
+        const totalImages = images.length;
+
+        // Show the first image by default
+        images.eq(currentIndex).addClass('active');
+
+        // Button Next functionality
+        $('.next-btn').click(function() {
+            images.eq(currentIndex).removeClass('active');
+            currentIndex = (currentIndex + 1) % totalImages; // Move to the next image
+            images.eq(currentIndex).addClass('active');
+        });
+
+        // Button Previous functionality
+        $('.prev-btn').click(function() {
+            images.eq(currentIndex).removeClass('active');
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Move to the previous image
+            images.eq(currentIndex).addClass('active');
+        });
+    });
+</script>
+
+</body>
+</html>
