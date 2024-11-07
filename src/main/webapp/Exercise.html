@@ -98,7 +98,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </div>
             </div>
         </div>
+        <div class="bubbles"></div>
     </div>
 </section>
+<script>
+    const numberOfBubbles = 20;
+    const bubblesContainer = document.querySelector('.bubbles');
+
+    function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+
+        // Đặt vị trí ngẫu nhiên cho bong bóng
+        const left = Math.random() * 100; // Tọa độ left từ 0% đến 100%
+        const animationDuration = Math.random() * 5 + 5; // Thời gian sống ngẫu nhiên (từ 5s đến 10s)
+
+        bubble.style.left = `${left}%`;
+        bubble.style.animationDuration = `${animationDuration}s`;
+
+        // Thêm bong bóng vào container
+        bubblesContainer.appendChild(bubble);
+
+        // Sau khi bong bóng kết thúc hoạt ảnh, xóa nó đi để tiết kiệm bộ nhớ
+        setTimeout(() => {
+            bubble.remove();
+        }, animationDuration * 1000); // Thời gian bằng thời gian hoạt ảnh
+    }
+
+    // Tạo các bong bóng ngẫu nhiên mỗi giây
+    setInterval(createBubble, 500);
+</script>
+
 </body>
 </html>

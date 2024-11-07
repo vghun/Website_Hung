@@ -14,8 +14,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-family: 'Poppins',sans-serif;
 
 }
+
 .body{
     color:#ededed;
+    overflow: auto;
 
 }
 .header{
@@ -414,27 +416,40 @@ button.prev-btn:hover, button.next-btn:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    pointer-events: none; /* Ngăn không cho bong bóng cản trở tương tác */
+    pointer-events: none; /* Ngăn không cho đom đóm cản trở tương tác */
     z-index: 9999;
 }
 
 .bubble {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 10px; /* Kích thước nhỏ hơn để giống đom đóm */
+    height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    animation: bubbleAnimation 6s infinite;
+    background: rgba(255, 223, 0, 0.8); /* Màu vàng nhạt cho đom đóm */
+    box-shadow: 0 0 10px rgba(255, 223, 0, 0.6); /* Tạo hiệu ứng phát sáng */
+    animation: fireflyAnimation 4s infinite; /* Sử dụng hoạt ảnh chớp sáng */
 }
 
-@keyframes bubbleAnimation {
+/* Hoạt ảnh cho đom đóm */
+@keyframes fireflyAnimation {
     0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(100vh) translateX(0) scale(0.8);
+        opacity: 0;
+    }
+    25% {
         opacity: 1;
+        transform: translateY(50vh) translateX(-30px) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(30vh) translateX(20px) scale(0.9);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(10vh) translateX(-10px) scale(1.1);
     }
     100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(-100vh) translateX(30px) scale(0.8);
         opacity: 0;
     }
 }
